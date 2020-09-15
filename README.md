@@ -1,1 +1,1 @@
-# distributed-system-projects
+# CS425 Distributed System Projects
