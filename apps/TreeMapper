@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+from os.path import expanduser
+import sys
+
+if len(sys.argv) < 2:
+    for line in sys.stdin:
+        line = line.strip()
+        data = eval(line)
+        data = data["properties"]
+
+        if "TREETYPE" in data and data["TREETYPE"] == "Retired":
+            print('{}\t{}'.format("Retired", 1))
+else:
+    input_file = sys.argv[1]
+    out_prefix = sys.argv[2]
+    cnt = 0
+    with open(input_file) as f:
+        for line in f.readlines():
+            line = line.strip()
+            data = eval(line)
+            data = data["properties"]
+
+            if "TREETYPE" in data and data["TREETYPE"] == "Retired":
+                cnt += 1
+    home = expanduser("~")
+    with open(home+"/local/"+out_prefix+"_Retired", "w+") as out_file:
+        out_file.write(str(cnt)+"\n")
+    print(out_prefix+"_Retired")

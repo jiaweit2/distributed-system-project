@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import sys
+from os.path import expanduser
+
+
+if len(sys.argv) < 2:
+    cnt = 0
+    for line in sys.stdin:
+        line = line.strip()
+        _, count = line.split('\t', 1)
+
+        try:
+            count = int(count)
+        except:
+            continue
+        cnt += count
+
+    print("Retired\t{}".format(cnt))
+else:
+    input_file = sys.argv[1]
+    out_file = sys.argv[2]
+    home = expanduser("~")
+    cnt = 0
+    with open(input_file) as f:
+        for line in f.readlines():
+            line = line.strip()
+            try:
+                count = int(line)
+            except:
+                continue
+            cnt += count
+    with open(home+"/local/"+out_file, "a+") as out_file:
+        out_file.write(str(cnt)+"\n")
