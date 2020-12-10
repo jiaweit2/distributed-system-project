@@ -1,4 +1,7 @@
-# CS425 Distributed System Projects
+# Distributed System Projects
+
+## About
+This is a distributed system course project (from CS425) involving the building of <b>Distributed Group Memberships</b>, <b>Distributed File System</b>, <b>Map/Reduce</b> etc.
 
 ## Run
 
